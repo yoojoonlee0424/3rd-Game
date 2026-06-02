@@ -49332,7 +49332,7 @@ MonoBehaviour:
   AirAccelerationSpeed: 30
   Drag: 0
   AllowJumpingWhenSliding: 1
-  JumpUpSpeed: 20
+  JumpUpSpeed: 13
   JumpScalableForwardSpeed: 0
   JumpPreGroundingGraceTime: 0.1
   JumpPostGroundingGraceTime: 0.1

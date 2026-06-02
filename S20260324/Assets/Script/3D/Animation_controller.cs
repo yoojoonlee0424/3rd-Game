@@ -22,5 +22,22 @@ public class Animation_controller : MonoBehaviour
             animator.ResetTrigger("Jump");
         }
 
+        if(Input.GetKeyDown(KeyCode.R))
+        {
+            if(Random.Range(0, 3) == 1)
+            {
+                animator.SetTrigger("Rest");
+            }
+            else
+            {
+                animator.SetTrigger("Idle2");
+            }
+        }
+        else
+        {
+            animator.ResetTrigger("Rest");
+            animator.ResetTrigger("Idle2");
+        }
+
     }
 }
