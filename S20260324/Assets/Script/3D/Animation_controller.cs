@@ -17,6 +17,7 @@ public class Animation_controller : MonoBehaviour
 
     private void Update()
     {
+        /*
         Vector3 characterVelocity = characterController.Motor.Velocity;
 
         // ÇÃ·§Æû(AttachedRigidbody) ¼Óµµ Á¦°Å
@@ -36,9 +37,10 @@ public class Animation_controller : MonoBehaviour
         if (_animationBlend < 0.01f) _animationBlend = 0f;
 
         animator.SetFloat("Speed", _animationBlend);
-
+        */
         
         MoveAni();
+        inAir();
         JumpAni();
         RestAni();
 
@@ -46,8 +48,22 @@ public class Animation_controller : MonoBehaviour
 
     private void MoveAni()
     {
-        animator.SetFloat("Speed", new Vector3(characterController.Motor.Velocity.x, 0, characterController.Motor.Velocity.z).magnitude/4);
-        if(characterController.Motor.GroundingStatus.IsStableOnGround)
+
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
+        {
+            animator.SetFloat("Speed", new Vector3(characterController.Motor.Velocity.x, 0, characterController.Motor.Velocity.z).magnitude / 4);
+        }
+        else
+        {
+            animator.SetFloat("Speed", 0);
+            return;
+        }
+        
+    }
+
+    private void inAir()
+    {
+        if (characterController.Motor.GroundingStatus.IsStableOnGround)
         {
             return;
         }
@@ -56,6 +72,7 @@ public class Animation_controller : MonoBehaviour
             animator.SetFloat("InAir", characterController.Motor.Velocity.y);
         }
     }
+
 
 
     private void JumpAni()
